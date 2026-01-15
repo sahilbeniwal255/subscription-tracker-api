@@ -2,8 +2,11 @@
   "name": "subscription-tracker",
   "version": "1.0.0",
   "description": "readme file for api project",
+  "type": "module",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +21,10 @@
   "homepage": "https://github.com/sahilbeniwal255/subscription-tracker-api#readme",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "globals": "^17.0.0",
+    "nodemon": "^3.1.11"
   }
 }
