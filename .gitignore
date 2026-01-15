@@ -24,6 +24,8 @@ build/
 
 # Environment variables
 .env
+.env.development
+.env.production
 
 # IDE/editor settings
 .vscode/

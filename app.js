@@ -1,1 +1,18 @@
-console.log("hello world");
+
+//eslint to keep code clean and error free
+//nodemon is used to restart server automatically on code changes in dev environment only so it is in dev script
+//start is for production environment to start the server
+//"type": "module" is added in package.json to use es6 import export syntax instead of commonjs require syntax
+
+import express from 'express';
+import {PORT} from './config/env.js';
+
+const app = express();
+app.get('/', (req, res) => {
+    res.send('Hello, World!');
+})
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
+export default app;
