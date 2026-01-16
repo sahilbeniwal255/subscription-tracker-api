@@ -7,4 +7,4 @@ config({path : `.env.${process.env.NODE_ENV || 'development'}`});
 //if NODE_ENV is not set, it defaults to 'development'
 //config() function from dotenv package is used to load the environment variables into process.env
 
-export const {PORT} = process.env;
+export const {PORT, DB_URI} = process.env;
