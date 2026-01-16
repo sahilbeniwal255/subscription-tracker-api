@@ -5,9 +5,17 @@
 //"type": "module" is added in package.json to use es6 import export syntax instead of commonjs require syntax
 
 import express from 'express';
+import userRouter from './routes/user.routes.js';
+import authRouter from './routes/auth.routes.js';
+import subscriptionRouter from './routes/subscriptions.routes.js';
 import {PORT} from './config/env.js';
 
 const app = express();
+
+app.use('/api/users', userRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/subscriptions', subscriptionRouter);  
+
 app.get('/', (req, res) => {
     res.send('Hello, World!');
 })
