@@ -14,6 +14,7 @@ import {PORT} from './config/env.js';
 import connectToDatabase from './database/db.js';
 
 const app = express();
+app.use(express.json());
 
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);

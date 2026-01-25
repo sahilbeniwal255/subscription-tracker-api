@@ -1,4 +1,4 @@
-import {mongoose} from 'mongoose';
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
     name : {
@@ -20,9 +20,10 @@ const userSchema = new mongoose.Schema({
         type : String,
         required: [true, "Password is required"],
         minLength : [6, "Password must be at least 6 characters long"]
-    },
-    options: { timestamps : true } //to keep track of createdAt and updatedAt
-});
+    }
+},
+{ timestamps : true } //to keep track of createdAt and updatedAt
+);
 
 const User = mongoose.model('User', userSchema);
 
