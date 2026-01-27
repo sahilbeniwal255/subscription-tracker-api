@@ -7,4 +7,4 @@ config({path : `.env.${process.env.NODE_ENV || 'development'}`});
 //if NODE_ENV is not set, it defaults to 'development'
 //config() function from dotenv package is used to load the environment variables into process.env
 
-export const {PORT, DB_URI, JWT_SECRET, JWT_EXPIRES_IN, JWT_SECRET_KEY} = process.env;
+export const {PORT, DB_URI, JWT_SECRET, JWT_EXPIRES_IN, JWT_SECRET_KEY, ARCJET_KEY} = process.env;

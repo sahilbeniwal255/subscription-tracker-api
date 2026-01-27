@@ -5,9 +5,7 @@ import {signOut} from '../controllers/auth.controller.js';
 
 const authRouter = Router();
 
-authRouter.post('/sign-in', (req, res) => {
-    signIn
-});
+authRouter.post('/sign-in', signIn);
 
 authRouter.post('/sign-up', signUp);
 

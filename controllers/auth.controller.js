@@ -28,8 +28,11 @@ export const signUp = async (req, res, next) => {
             name,
             email,
             password: hashedPassword
-        }, {session});
+        });
         //if some error occurs during save operation it will be caught in catch block as we have used session and user will not be commited to DB
+
+        await newUser.save({ session });
+
 
         const token = jwt.sign({userId : newUser._id}, JWT_SECRET_KEY, {expiresIn: JWT_EXPIRES_IN})
 
@@ -50,7 +53,31 @@ export const signUp = async (req, res, next) => {
 }
 
 export const signIn = async (req, res, next) => {
+    const {email, password} = req.body;
+    try {
+        const user = await User.findOne({email});
+        if(!user) {
+            const error = new Error("User does not exist");
+            error.statusCode = 404;
+            throw error;
+        }
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if(!isPasswordValid) {
+            const error = new Error("Invalid credentials");
+            error.statusCode = 401;
+            throw error;
+        }
 
+        const token = jwt.sign({userId : user._id}, JWT_SECRET_KEY, {expiresIn: JWT_EXPIRES_IN})
+
+        res.status(200).json({
+            message: "Sign in successful",
+            token,
+            user: { id: user._id, username: user.name, email: user.email }
+        });
+    } catch (error) {
+        next(error);
+    }
 }
 
 export const signOut = async (req, res, next) => {

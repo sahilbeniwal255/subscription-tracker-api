@@ -1,14 +1,13 @@
 import {Router} from 'express';
+import { getAllUsers, getUser } from '../controllers/user.controller.js';
+import { get } from 'mongoose';
+import { autherization, autherizationAdmin } from '../middleware/auth.middleware.js';
 
 const userRouter = Router();
 
-userRouter.get('/', (req, res) => {
-    res.send('Get Users');
-});
+userRouter.get('/', autherizationAdmin ,getAllUsers);
 
-userRouter.get('/:id', (req, res) => {
-    res.send(`Get User with ID: ${req.params.id}`);
-});
+userRouter.get('/:id', autherization, getUser);
 
 userRouter.post('/', (req, res) => {
     res.send('create new Users');

@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/sahilbeniwal255/subscription-tracker-api#readme",
   "dependencies": {
+    "@arcjet/inspect": "^1.0.0",
+    "@arcjet/node": "^1.0.0",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
