@@ -76,6 +76,7 @@ export const signIn = async (req, res, next) => {
             user: { id: user._id, username: user.name, email: user.email }
         });
     } catch (error) {
+        console.log("Error in signin controller:", error);
         next(error);
     }
 }

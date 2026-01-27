@@ -12,9 +12,12 @@ import authRouter from './routes/auth.routes.js';
 import subscriptionRouter from './routes/subscriptions.routes.js';
 import {PORT} from './config/env.js';
 import connectToDatabase from './database/db.js';
+import arcjet from './middleware/arcjet.middleware.js';
+
 
 const app = express();
 app.use(express.json());
+app.use(arcjet);
 
 app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
